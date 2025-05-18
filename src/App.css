@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../public/upload/drinkba.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Menu section styles */
+.menu-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Section title styles */
+.cocktails-title {
+  color: #ff6b6b; /* Coral red */
+  border-color: #ff6b6b;
+}
+
+.beers-title {
+  color: #f8d56b; /* Golden yellow */
+  border-color: #f8d56b;
+}
+
+.wines-title {
+  color: #a5d8ff; /* Light blue */
+  border-color: #a5d8ff;
+}
+
+/* Menu item styles */
+.menu-item {
+  display: flex;
+  margin: 25px 0;
+  align-items: center;
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-left: 20px;
+  order: 2;
+}
+
+.item-details {
+  flex: 1;
+  order: 1;
+}
+
+.item-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8em;
+  margin: 0;
+  color: #fff;
+}
+
+.item-description {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #ddd;
+}
+
+.item-price {
+  font-weight: bold;
+  color: #f8d56b;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #aaa;
+}
