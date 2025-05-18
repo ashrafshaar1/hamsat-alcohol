@@ -1,18 +1,43 @@
-body {
+/* Reset and base styles */
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   font-family: Arial, sans-serif;
-  background-image: url('../public/upload/drinkba.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
   color: white;
 }
 
+/* Background image solution that works on iOS */
+body {
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../public/upload/drinkba.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  
+  /* iOS specific fixes */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+/* Overlay styles */
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   min-height: 100vh;
   padding: 20px;
+  position: relative;
 }
 
 /* Menu section styles */
@@ -84,4 +109,22 @@ footer {
   margin-top: 40px;
   font-size: 0.9em;
   color: #aaa;
+  position: relative;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .menu-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .item-image {
+    margin: 15px 0 0 0;
+    order: 1;
+  }
+  
+  .item-details {
+    order: 2;
+  }
 }
