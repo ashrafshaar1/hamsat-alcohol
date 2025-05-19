@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Base Reset */
 html, body {
   margin: 0;
   padding: 0;
@@ -6,64 +6,66 @@ html, body {
   height: 100%;
   font-family: Arial, sans-serif;
   color: white;
-  overflow-x: hidden; /* Prevent horizontal scroll during rotation */
+  overflow-x: hidden;
 }
 
-/* Background solution optimized for iOS */
+/* Background Image - Left Adjusted */
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background-image: url('../public/upload/drinkba.jpg');
-  background-size: cover;
-  background-position: center center;
+  background-size: 135% auto;
+  background-position: 25% center;
   background-repeat: no-repeat;
-  background-attachment: scroll; /* Changed from fixed */
   z-index: -1;
   
-  /* iOS specific viewport fitting */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  
-  /* Prevent zooming behavior */
+  /* Vendor Prefixes */
+  -webkit-background-size: 135% auto;
+  -moz-background-size: 135% auto;
+  -o-background-size: 135% auto;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  
-  /* Handle rotation changes */
-  @supports (-webkit-touch-callout: none) {
-    /* iOS-specific fixes */
-    height: 100vh;
-    min-height: -webkit-fill-available;
-  }
 }
 
-/* Viewport adjustment for mobile Safari */
+/* iPhone Specific Adjustments */
 @supports (-webkit-touch-callout: none) {
-  body {
-    /* Prevent address bar resizing issues */
+  body::before {
+    background-size: 160% auto;
+    background-position: 20% center;
+  }
+  
+  html, body {
     height: -webkit-fill-available;
     min-height: -webkit-fill-available;
   }
 }
 
-/* Overlay styles */
+/* Overlay */
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   min-height: 100vh;
-  min-height: -webkit-fill-available; /* For mobile Safari */
+  min-height: -webkit-fill-available;
   padding: 20px;
   position: relative;
 }
 
-/* Rest of your existing styles... */
+/* Menu Section */
 .menu-section {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+}
+
+/* Section Titles */
+.section-title {
+  border-bottom: 2px solid;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
 .cocktails-title {
@@ -81,6 +83,7 @@ body::before {
   border-color: #a5d8ff;
 }
 
+/* Menu Items */
 .menu-item {
   display: flex;
   margin: 25px 0;
@@ -119,6 +122,7 @@ body::before {
   color: #f8d56b;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -128,13 +132,11 @@ footer {
   position: relative;
 }
 
-/* Enhanced mobile handling */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   body::before {
-    /* More flexible mobile sizing */
-    background-size: contain;
-    background-position: top center;
-    background-color: #000; /* Fallback color around image */
+    background-size: 180% auto;
+    background-position: 15% center;
   }
   
   .menu-item {
@@ -152,16 +154,30 @@ footer {
   }
 }
 
-/* Orientation-specific fixes */
+/* Orientation Handling */
 @media (orientation: portrait) {
   body::before {
-    background-size: cover;
+    background-size: 150% auto;
+    background-position: 20% center;
   }
 }
 
 @media (orientation: landscape) {
   body::before {
-    background-size: contain;
-    background-position: center center;
+    background-size: auto 150%;
+    background-position: 25% center;
+  }
+}
+
+/* Safe Area for Notches */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  .overlay {
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
   }
 }
