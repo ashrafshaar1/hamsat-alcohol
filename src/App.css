@@ -46,7 +46,7 @@ body::before {
 
 /* Overlay */
 .overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   min-height: 100vh;
   min-height: -webkit-fill-available;
   padding: 20px;
