@@ -6,64 +6,81 @@ html, body {
   height: 100%;
   font-family: Arial, sans-serif;
   color: white;
+  overflow-x: hidden; /* Prevent horizontal scroll during rotation */
 }
 
-/* Background image solution that works on iOS */
-body {
-  position: relative;
-}
-
+/* Background solution optimized for iOS */
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('../public/upload/drinkba.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: scroll; /* Changed from fixed */
   z-index: -1;
   
-  /* iOS specific fixes */
+  /* iOS specific viewport fitting */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  
+  /* Prevent zooming behavior */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  
+  /* Handle rotation changes */
+  @supports (-webkit-touch-callout: none) {
+    /* iOS-specific fixes */
+    height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Viewport adjustment for mobile Safari */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Prevent address bar resizing issues */
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* Overlay styles */
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   min-height: 100vh;
+  min-height: -webkit-fill-available; /* For mobile Safari */
   padding: 20px;
   position: relative;
 }
 
-/* Menu section styles */
+/* Rest of your existing styles... */
 .menu-section {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Section title styles */
 .cocktails-title {
-  color: #ff6b6b; /* Coral red */
+  color: #ff6b6b;
   border-color: #ff6b6b;
 }
 
 .beers-title {
-  color: #f8d56b; /* Golden yellow */
+  color: #f8d56b;
   border-color: #f8d56b;
 }
 
 .wines-title {
-  color: #a5d8ff; /* Light blue */
+  color: #a5d8ff;
   border-color: #a5d8ff;
 }
 
-/* Menu item styles */
 .menu-item {
   display: flex;
   margin: 25px 0;
@@ -102,7 +119,6 @@ body::before {
   color: #f8d56b;
 }
 
-/* Footer styles */
 footer {
   text-align: center;
   padding: 20px;
@@ -112,8 +128,15 @@ footer {
   position: relative;
 }
 
-/* Mobile-specific adjustments */
+/* Enhanced mobile handling */
 @media (max-width: 768px) {
+  body::before {
+    /* More flexible mobile sizing */
+    background-size: contain;
+    background-position: top center;
+    background-color: #000; /* Fallback color around image */
+  }
+  
   .menu-item {
     flex-direction: column;
     text-align: center;
@@ -126,5 +149,19 @@ footer {
   
   .item-details {
     order: 2;
+  }
+}
+
+/* Orientation-specific fixes */
+@media (orientation: portrait) {
+  body::before {
+    background-size: cover;
+  }
+}
+
+@media (orientation: landscape) {
+  body::before {
+    background-size: contain;
+    background-position: center center;
   }
 }
