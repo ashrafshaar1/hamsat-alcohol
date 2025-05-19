@@ -50,6 +50,34 @@ const MenuSection = () => {
         alt: "Red Wine"
       },
       {
+        title: "House Red",
+        description: "Full-bodied Cabernet Sauvignon",
+        price: "$9/glass, $32/bottle",
+        image: "/upload/wine1.jpg",
+        alt: "Red Wine"
+      },
+      {
+        title: "House Red",
+        description: "Full-bodied Cabernet Sauvignon",
+        price: "$9/glass, $32/bottle",
+        image: "/upload/wine1.jpg",
+        alt: "Red Wine"
+      },
+      {
+        title: "House Red",
+        description: "Full-bodied Cabernet Sauvignon",
+        price: "$9/glass, $32/bottle",
+        image: "/upload/wine1.jpg",
+        alt: "Red Wine"
+      },
+      {
+        title: "House Red",
+        description: "Full-bodied Cabernet Sauvignon",
+        price: "$9/glass, $32/bottle",
+        image: "/upload/wine1.jpg",
+        alt: "Red Wine"
+      },
+      {
         title: "Chardonnay",
         description: "Oak-aged white wine with buttery notes",
         price: "$8/glass, $28/bottle",
