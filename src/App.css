@@ -18,15 +18,15 @@ body::before {
   right: 0;
   bottom: 0;
   background-image: url('/upload/back2.svg');
-  background-size: 135% auto;
+  background-size: 150% auto; /* Increased from 135% */
   background-position: 25% center;
   background-repeat: no-repeat;
   z-index: -1;
   
   /* Vendor Prefixes */
-  -webkit-background-size: 135% auto;
-  -moz-background-size: 135% auto;
-  -o-background-size: 135% auto;
+  -webkit-background-size: 150% auto;
+  -moz-background-size: 150% auto;
+  -o-background-size: 150% auto;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
@@ -34,7 +34,7 @@ body::before {
 /* iPhone Specific Adjustments */
 @supports (-webkit-touch-callout: none) {
   body::before {
-    background-size: 160% auto;
+    background-size: 220% auto; /* Increased from 160% to zoom out more */
     background-position: 20% center;
   }
   
@@ -135,7 +135,7 @@ footer {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   body::before {
-    background-size: 180% auto;
+    background-size: 220% auto; /* Increased from 180% */
     background-position: 15% center;
   }
   
@@ -157,14 +157,14 @@ footer {
 /* Orientation Handling */
 @media (orientation: portrait) {
   body::before {
-    background-size: 150% auto;
+    background-size: 220% auto; /* Increased from 150% */
     background-position: 20% center;
   }
 }
 
 @media (orientation: landscape) {
   body::before {
-    background-size: auto 150%;
+    background-size: auto 200%; /* Increased from 150% */
     background-position: 25% center;
   }
 }
